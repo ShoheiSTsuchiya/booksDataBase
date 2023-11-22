@@ -41,11 +41,33 @@ public class BookController {
     books.forEach(bookList::add);
     return bookList;
   }
+
+  @GetMapping("/findByAuthor")
+  @ResponseBody
+  @CrossOrigin(origins = "*")
+  public List<Book> findByAuthor(@RequestParam String author) {
+    System.out.println("start of findByAuthor");
+   Iterable<Book> books = this.bookRepository.findByAuthor(author);
+    // Iterable<Book> books = this.bookRepository.findAll();
+    List<Book> bookList = new ArrayList<>();
+    books.forEach(bookList::add);
+    return bookList;
+  }
+
+  @GetMapping("/findByUserId")
+  @ResponseBody
+  @CrossOrigin(origins = "*")
+  public List<Book> findByUserId(@RequestParam String userId) {
+    Iterable<Book> books = this.bookRepository.findByUserId(userId);
+    List<Book> bookList = new ArrayList<>();
+    books.forEach(bookList::add);
+    return bookList;
+  }
   /*public String findAllBooks() {
     Iterable<Book> books = this.bookRepository.findAll();
     List<Book> bookList = new ArrayList<>();
     books.forEach(bookList::add);
     return books.toString();
-    
+
   } */
 }

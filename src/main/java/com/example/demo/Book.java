@@ -14,10 +14,21 @@ public class Book {
 
   int year;
 
-  public Book(String title, String author, int year) {
+  String userId;
+
+  public Book(String title, String author, int year, String userId) {
     this.title = title;
     this.author = author;
     this.year = year;
+    this.userId = userId;
+  }
+
+  public String getUserId() {
+    return userId;
+  }
+
+  public void setUserId(String userId) {
+    this.userId = userId;
   }
 
   public long getId() {
@@ -59,6 +70,7 @@ public class Book {
         ", title:'" + this.title + '\'' +
         ", author:'" + this.author + '\'' +
         ", year:" + this.year +
+        ", userId:'" + this.userId + '\'' +
         '}';
   }
 }
